@@ -1,4 +1,4 @@
-function userObject () {
+function ShowUserObject () {
 	let user = {
 		name: "John"
 	}

@@ -1,4 +1,4 @@
-function diff (a, b) {
+function showDiff (a, b) {
 	result = a < b ? b-a : a-b;
 	
 	console.log("Разница: " + result);

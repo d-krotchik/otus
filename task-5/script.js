@@ -1,6 +1,6 @@
 let arr = [1,2,3,4,5,6,7,8,9,11];
 
-function arrSum () {
+function showArrSum () {
 	
 	let result = 0;
 	for (let i = 0; i < arr.length; i++) {
@@ -10,7 +10,7 @@ function arrSum () {
 	console.log("Сумма: " + result);
 }
 
-function arrMultiple () {
+function showArrMultiple () {
 	let result = [];
 	for (let i = 0; i < arr.length; i++) {
 		result.push(arr[i] * 2);

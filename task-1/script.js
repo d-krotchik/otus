@@ -1,16 +1,16 @@
-function sum (a, b) {
+function printSum (a, b) {
 	console.log ("Сумма чисел: "+ a + b);
 }
 
-function multiplication (a, b) {
+function printMultiplication (a, b) {
 	console.log ("Произведение чисел: "+ a * b);
 }
 
-function sumStr (str1, str2) {
+function printSumStr (str1, str2) {
 	console.log ("Количество символов: " + (str1.length + str2.length));
 }
 
-function userSum () {
+function printUserSum () {
 	let num = prompt("Введите трёхзначное число");
 	
 	let result = 0;

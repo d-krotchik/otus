@@ -1,8 +1,8 @@
-function biggerNum (a, b) {
+function printBiggerNum (a, b) {
 	console.log ("Большее число " + (a > b ? a : b));
 }
 
-function month () {
+function printMonth () {
 	let num = prompt('Введите число от 1 до 12');
 	
 	switch (num) {

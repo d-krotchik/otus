@@ -1,4 +1,4 @@
-function regFunc (str) {
+function checkString (str) {
 	const dateTest = /\d{1,2}[\.\/]\d{2}[\.\/]\d{2,4}/;
 	const mailTest = /[\da-z\.]+@[\da-z]+\.[a-z]+/;
 	
