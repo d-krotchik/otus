@@ -23,7 +23,7 @@ describe("Тесты для д.з. по скрытой кнопке и доба�
     expect(button).toBeDefined();
   });
 
-  test("4. СПроверка существования параграфа", () => {
+  test("4. Проверка существования параграфа", () => {
     let paragraph = document.querySelector("p");
     expect(paragraph).toBeDefined();
   });
