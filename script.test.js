@@ -4,58 +4,56 @@ function initDOM() {
   document.body.innerHTML = fs.readFileSync("index.html", "utf-8");
 }
 describe("Тесты для д.з. по скрытой кнопке и добавляемым параграфам", () => {
+  let input;
+  let button;
+  let paragraph;
+  let paragraphs;
+
   beforeEach(() => {
     initDOM();
+
+    input = document.querySelector('[data-name="new-paragraph-text"]');
+    button = document.querySelector('[data-name="new-paragraph-button"]');
+    paragraph = document.querySelector("p");
+    paragraphs = document.querySelectorAll("p");
   });
 
   test("1. Есть ли заголовок (h2) с описанием", () => {
-    let paragraph = document.querySelector("h2");
-    expect(paragraph).toBeDefined();
+    let title = document.querySelector("h2");
+    expect(title).toBeDefined();
   });
 
   test("2. Проверка существования поля ввода", () => {
-    let input = document.querySelector('[data-name="new-paragraph-text"]');
     expect(input).toBeDefined();
   });
 
   test("3. Проверка существования кнопки", () => {
-    let button = document.querySelector('[data-name="new-paragraph-button"]');
     expect(button).toBeDefined();
   });
 
   test("4. Проверка существования параграфа", () => {
-    let paragraph = document.querySelector("p");
     expect(paragraph).toBeDefined();
   });
 
   test("5. Параграфов по умолчанию должно быть 3", () => {
-    let paragraphs = document.querySelectorAll("p");
     expect(paragraphs.length).toBe(3);
   });
 
   test("6. Кнопки не должно быть видно", () => {
-    let button = document.querySelector('[data-name="new-paragraph-button"]');
     expect(button.hasAttribute("hidden")).toBe(true);
   });
 
   test("7. Кнопки должна быть видна, когда заполнено поле ввода", () => {
-    let button = document.querySelector('[data-name="new-paragraph-button"]');
-    let input = document.querySelector('[data-name="new-paragraph-text"]');
-
     input.value = "Some text";
 
     expect(button.hasAttribute('[hidden="hidden"]')).toBe(false);
   });
 
   test("8. Пустое ли поле ввода по умолчанию", () => {
-    let input = document.querySelector('[data-name="new-paragraph-text"]');
     expect(input.value = "").toBe("");
   });
 
   test("9. При очистке поля ввода, кнопка должна скрываться", () => {
-    let button = document.querySelector('[data-name="new-paragraph-button"]');
-    let input = document.querySelector('[data-name="new-paragraph-text"]');
-
     input.value = "Some text";
     input.value = "";
 
@@ -65,6 +63,51 @@ describe("Тесты для д.з. по скрытой кнопке и доба�
   test("10. Существует ли div, для вставки новых параграфов", () => {
     let divElement = document.querySelector("div");
     expect(divElement).toBeDefined();
+  });
+
+  test("11. После клика должен быть добавлен параграф", () => {
+    let startParagraphsCount = document.querySelectorAll("p").length;
+
+    input.value = "Some text";
+    button.click();
+
+    let afterClickParagraphsCount = document.querySelectorAll("p").length;
+
+    expect(startParagraphsCount).toBe(afterClickParagraphsCount - 1);
+  });
+
+  test("12. Поле очищается после нажатия кнопки", () => {
+    let button = document.querySelector('[data-name="new-paragraph-button"]');
+    let input = document.querySelector('[data-name="new-paragraph-text"]');
+
+    input.value = "Some text";
+    button.click();
+
+    expect(input.value).toBe("");
+  });
+
+  test("13. Одновременно может быть не более 5 параграфов", () => {
+    for (let i = 0; i < 5; i++) {
+      button.click();
+    }
+
+    let paragraphsCount = document.querySelectorAll("p").length;
+    expect(paragraphsCount).toBe(5);
+  });
+
+  test("14. Текст в параграфе такой же как был в инпуте", () => {
+    let text = `${Math.random()}`;
+    input.value = text;
+    button.click();
+
+    expect(paragraphs[0].innerHTML).toEqual(text);
+  });
+
+  test("15. Проверяем что текст добавился именно в параграф", () => {
+    input.value = "Some text";
+    button.click();
+
+    expect(paragraphs[0].tagName).toBe("p");
   });
 
 });

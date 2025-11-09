@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', function(){
 		container.prepend(paragraph);
 
 		input.value = "";
+
+		let paragraphsCounter = document.querySelectorAll("p");
+		if (paragraphsCounter.length > 5) {
+			paragraphsCounter[0].remove();
+		}
 	};
 	
 });
