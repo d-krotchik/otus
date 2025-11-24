@@ -7,10 +7,11 @@ export function pApp(el) {
     <p>3</p>
   `;
 
+  const input = el.querySelector("input");
   const button = el.querySelector("button");
 
   input.addEventListener("input", () => {
-    button.hidden = !Boolean(input.value);
+    button.hidden = button.hidden = input.value.length === 0;
   });
 
   button.addEventListener("click", () => {
