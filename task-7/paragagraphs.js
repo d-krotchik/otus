@@ -7,7 +7,6 @@ export function pApp(el) {
     <p>3</p>
   `;
 
-  const input = el.querySelector("input");
   const button = el.querySelector("button");
 
   input.addEventListener("input", () => {

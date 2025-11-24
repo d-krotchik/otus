@@ -9,12 +9,6 @@
     "lint": "eslint"
   },
 
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-
   "lint-staged": {
     "task-7/paragagraphs.js": "eslint"
   },
