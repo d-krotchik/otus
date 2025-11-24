@@ -3,12 +3,19 @@
   "version": "1.0.0",
   "description": "Репозиторий для курсов",
   "main": "script.js",
+
   "scripts": {
     "test": "jest",
     "lint": "eslint"
   },
+
+  "lint-staged": {
+    "task-7/paragagraphs.js": "eslint"
+  },
+
   "author": "d.krotchik",
   "license": "ISC",
+
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
@@ -20,6 +27,6 @@
     "husky": "^9.1.7",
     "jest": "^30.2.0",
     "jest-environment-jsdom": "^30.2.0",
-    "lint-staged": "^16.2.6"
+    "lint-staged": "^16.2.7"
   }
 }

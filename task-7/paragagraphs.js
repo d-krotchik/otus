@@ -11,7 +11,7 @@ export function pApp(el) {
   const button = el.querySelector("button");
 
   input.addEventListener("input", () => {
-    button.hidden = !Boolean(input.value);
+    button.hidden = input.value.length === 0;
   });
 
   button.addEventListener("click", () => {
