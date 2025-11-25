@@ -1,7 +1,10 @@
 const config = {
   testEnvironment: "jsdom",
   collectCoverageFrom: [
-    "task-7/paragagraphs.js"
+    "./*/*.js"
+  ],
+  coveragePathIgnorePatterns: [
+    "./*/script.js",
   ],
   collectCoverage: true,
   coverageProvider: "v8",

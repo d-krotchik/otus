@@ -10,7 +10,7 @@
   },
 
   "lint-staged": {
-    "task-7/paragagraphs.js": "eslint"
+    "./*/*.js": "eslint"
   },
 
   "author": "d.krotchik",
