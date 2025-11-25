@@ -1,21 +1,20 @@
-const fs = require("fs");
+import { pApp } from "./paragagraphs.js";
 
-function initDOM() {
-  document.body.innerHTML = fs.readFileSync("index.html", "utf-8");
-}
+
 describe("Тесты для д.з. по скрытой кнопке и добавляемым параграфам", () => {
+  let el;
   let input;
   let button;
   let paragraph;
   let paragraphs;
 
   beforeEach(() => {
-    initDOM();
-
-    input = document.querySelector('[data-name="new-paragraph-text"]');
-    button = document.querySelector('[data-name="new-paragraph-button"]');
-    paragraph = document.querySelector("p");
-    paragraphs = document.querySelectorAll("p");
+    el = document.createElement("div");
+    pApp(el);
+    input = el.querySelector("input");
+    button = el.querySelector("button");
+    paragraph = el.querySelector("p");
+    paragraphs = el.querySelectorAll("p");
   });
 
   test("1. Есть ли заголовок (h2) с описанием", () => {
@@ -61,25 +60,21 @@ describe("Тесты для д.з. по скрытой кнопке и доба�
   });
 
   test("10. Существует ли div, для вставки новых параграфов", () => {
-    let divElement = document.querySelector("div");
-    expect(divElement).toBeDefined();
+    expect(el).toBeDefined();
   });
 
   test("11. После клика должен быть добавлен параграф", () => {
-    let startParagraphsCount = document.querySelectorAll("p").length;
+    let startParagraphsCount = el.querySelectorAll("p").length;
 
     input.value = "Some text";
     button.click();
 
-    let afterClickParagraphsCount = document.querySelectorAll("p").length;
+    let afterClickParagraphsCount = el.querySelectorAll("p").length;
 
     expect(startParagraphsCount).toBe(afterClickParagraphsCount - 1);
   });
 
   test("12. Поле очищается после нажатия кнопки", () => {
-    let button = document.querySelector('[data-name="new-paragraph-button"]');
-    let input = document.querySelector('[data-name="new-paragraph-text"]');
-
     input.value = "Some text";
     button.click();
 
@@ -91,7 +86,7 @@ describe("Тесты для д.з. по скрытой кнопке и доба�
       button.click();
     }
 
-    let paragraphsCount = document.querySelectorAll("p").length;
+    let paragraphsCount = el.querySelectorAll("p").length;
     expect(paragraphsCount).toBe(5);
   });
 
@@ -100,14 +95,16 @@ describe("Тесты для д.з. по скрытой кнопке и доба�
     input.value = text;
     button.click();
 
-    expect(paragraphs[0].innerHTML).toEqual(text);
+    paragraphs = el.querySelectorAll("p");
+
+    expect(paragraphs[paragraphs.length-1].innerHTML).toEqual(text);
   });
 
   test("15. Проверяем что текст добавился именно в параграф", () => {
     input.value = "Some text";
     button.click();
 
-    expect(paragraphs[0].tagName).toBe("p");
+    expect((paragraphs[0].tagName).toLowerCase()).toBe("p");
   });
 
 });
