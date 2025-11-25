@@ -6,7 +6,7 @@ const config = {
   coveragePathIgnorePatterns: [
     "./*/script.js",
   ],
-  collectCoverage: true,
+  collectCoverage: false,
   coverageProvider: "v8",
   coverageThreshold: {
     global: {

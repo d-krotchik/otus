@@ -6,7 +6,8 @@
 
   "scripts": {
     "test": "jest",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:coverage:single": "jest --coverage ./task-7/paragagraphs.test.js"
   },
 
   "lint-staged": {
